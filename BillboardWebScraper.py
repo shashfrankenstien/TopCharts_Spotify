@@ -4,6 +4,7 @@ import re
 
 # url = "http://www.billboard.com/charts/hot-100"
 url = "http://www.billboard.com/charts/rock-songs"
+
 top = 20
 
 class song():
