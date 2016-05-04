@@ -1,5 +1,5 @@
 import BillboardWebScraper
-import os
+import os, time
 import webbrowser
 
 top = 25
@@ -8,7 +8,8 @@ spotifyUrl = "http://open.spotify.com/track/"
 
 
 def err():
-	print 'Error in entry! Restarting application'
+	print 'Error in entry! Restarting application..'
+	time.sleep(1)
 	execute()
 
 def openSpotify(Id):

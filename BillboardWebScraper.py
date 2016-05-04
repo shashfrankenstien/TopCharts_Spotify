@@ -2,8 +2,8 @@ import urllib
 from BeautifulSoup import *
 import re
 
-url = "http://www.billboard.com/charts/hot-100"
-# url = "http://www.billboard.com/charts/rock-songs"
+# url = "http://www.billboard.com/charts/hot-100"
+url = "http://www.billboard.com/charts/rock-songs"
 
 top = 20
 
@@ -36,10 +36,10 @@ class song():
 
 	def setSpotifyId(self, links):
 		for link in links:
-			if link.get('title') == "Spotify":
-				fullLink = link.get('href')
-				Id = re.findall('track:(.+)', fullLink)
-				self.spotifyId = Id[0]
+			if link.get('class') == "chart-row__link chart-row__link--spotify js-spotify-play-full":
+				fullLink = link.get('data-href')
+				Id = re.findall('track/(.+)', fullLink)
+				self.spotifyId = str(Id[0])
 
 def run(top):
 	count = 0
