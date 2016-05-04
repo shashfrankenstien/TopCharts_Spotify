@@ -2,16 +2,20 @@ import urllib
 from BeautifulSoup import *
 import re
 
-# url = "http://www.billboard.com/charts/hot-100"
-url = "http://www.billboard.com/charts/rock-songs"
+url = "http://www.billboard.com/charts/hot-100"
+# url = "http://www.billboard.com/charts/rock-songs"
 
 top = 20
 
 class song():
 	_songCount = 0
+	position = ''
+	songName = ''
+	artist = ''
+	spotifyId = ''
 
 	def __init__(self):
-		pass
+		song._songCount += 1
 
 	def setPos(self, position):
 		for po in position:
@@ -48,6 +52,7 @@ def run(top):
 	tags = soup('article')
 
 	for tag in tags:
+
 		# print tag.contents
 		# print "\n\n\n\n\n"
 		Asong = song()
@@ -57,18 +62,22 @@ def run(top):
 		Asong.setSpotifyId(tag('a'))
 		songs.append(Asong)
 
+
 	print '---------------------------------------'
 	print 'Position\tSong -- Artist'
 	print '---------------------------------------'
 	for data in songs:
 		try:
-			pos = data.position
-			name = data.songName
-			artist = data.artist
-			spotify = data.spotifyId
-			print pos,'\t',name,'--',artist
-			# print 'Spotify:', spotify,'\n'
-		except: pass
+			if data.position:
+				pos = data.position
+				name = data.songName
+				artist = data.artist
+				spotify = data.spotifyId
+				print pos,'\t',name,'--',artist
+				# print 'Spotify:', spotify,'\n'
+		except Exception, e: #pass
+			print str(e)
+
 
 		if pos == top:
 			break

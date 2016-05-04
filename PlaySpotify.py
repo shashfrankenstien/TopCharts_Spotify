@@ -39,7 +39,7 @@ def execute():
 	if songs == 0:
 		print "No internet connection found.\n Terminating application"
 		quit()
-	else: playASong(songs)
+	# else: playASong(songs)
 
 	
 
